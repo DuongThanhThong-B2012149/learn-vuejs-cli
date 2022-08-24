@@ -1,15 +1,27 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <HelloWorld ref="hello" msg="Welcome to Your Vue.js App" />
+  <header-app ref="header" />
+  <button @click="changeEvent">Test event</button>
 </template>
 
 <script>
+import HeaderApp from "./components/HeaderApp.vue";
 import HelloWorld from "./components/HelloWorld.vue";
 
 export default {
   name: "App",
   components: {
     HelloWorld,
+    HeaderApp,
+  },
+  methods: {
+    changeEvent() {
+      // this.$refs.hello.onConsoleLogTesting();
+      // console.log("Running here...");
+      console.log(this.$refs.hello);
+      console.log(this.$refs.header);
+    },
   },
 };
 </script>

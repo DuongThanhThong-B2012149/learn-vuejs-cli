@@ -92,6 +92,11 @@ export default {
   props: {
     msg: String,
   },
+  methods: {
+    onConsoleLogTesting() {
+      console.log("onConsoleLogTesting running...");
+    },
+  },
 };
 </script>
 
