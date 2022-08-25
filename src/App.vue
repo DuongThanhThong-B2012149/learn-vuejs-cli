@@ -1,19 +1,42 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld ref="hello" msg="Welcome to Your Vue.js App" />
-  <header-app ref="header" />
-  <button @click="changeEvent">Test event</button>
+  <teleport to="body">
+    <modal
+      v-if="isShowModal"
+      title="This is a title"
+      content="Learn VueJS step by step"
+      @cancel="onToggleModal"
+      theme="example"
+    >
+      <template v-slot:header>
+        <div>
+          <h1>This is the header...</h1>
+        </div>
+      </template>
+      <label for="">Name</label>
+      <input type="text" />
+      <template v-slot:footer>
+        <div>
+          <h1>This is the footer...</h1>
+          <button @click="onToggleModal">Cancel</button>
+        </div>
+      </template>
+    </modal>
+  </teleport>
+  <button @click="onToggleModal">Show Modal</button>
 </template>
 
 <script>
-import HeaderApp from "./components/HeaderApp.vue";
-import HelloWorld from "./components/HelloWorld.vue";
+import Modal from "./components/ModalApp.vue";
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
-    HeaderApp,
+    Modal,
+  },
+  data() {
+    return {
+      isShowModal: false,
+    };
   },
   methods: {
     changeEvent() {
@@ -22,17 +45,11 @@ export default {
       console.log(this.$refs.hello);
       console.log(this.$refs.header);
     },
+    onToggleModal() {
+      this.isShowModal = !this.isShowModal;
+    },
   },
 };
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style></style>
