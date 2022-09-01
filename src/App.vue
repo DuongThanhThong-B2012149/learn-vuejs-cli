@@ -1,6 +1,6 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld ref="hello" msg="Welcome to Your Vue.js App" />
+  <hello-world ref="hello" msg="Welcome to Your Vue.js App" />
   <header-app ref="header" />
   <button @click="changeEvent">Test event</button>
 </template>
