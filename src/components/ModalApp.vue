@@ -3,6 +3,7 @@
     <div class="header">
       <slot name="header" />
     </div>
+
     <!-- Modal content -->
     <div class="modal-content" :class="{ themeActive: theme === 'example' }">
       <span class="close">&times;</span>
@@ -30,6 +31,7 @@ export default {
     theme: {
       type: String,
       required: true,
+      default: "example",
       validator(val) {
         return ["example", "temp"].includes(val);
       },
