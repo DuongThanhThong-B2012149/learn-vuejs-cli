@@ -6,6 +6,7 @@
         title="This is a title"
         content="Learn VueJS step by step"
         @cancel="onToggleModal"
+        ref="hello"
         theme="example"
       >
         <template v-slot:header>
@@ -26,6 +27,10 @@
       </modal-app>
     </teleport>
     <button @click="onToggleModal">Show Modal</button>
+    <h1 ref="hello">123</h1>
+    <p v-for="(item, index) in lists" :key="index" :ref="`${item}`">
+      {{ item }}
+    </p>
   </div>
 </template>
 
@@ -38,6 +43,7 @@ export default {
   data() {
     return {
       isShowModal: false,
+      lists: [1, 2, 3],
     };
   },
   methods: {
@@ -45,11 +51,13 @@ export default {
       // this.$refs.hello.onConsoleLogTesting();
       // console.log("Running here...");
       console.log(this.$refs.hello);
-      console.log(this.$refs.header);
+      // console.log(this.$refs.header);
     },
     onToggleModal() {
       console.log("onToggleModal");
       this.isShowModal = !this.isShowModal;
+
+      console.log(this.$refs);
     },
   },
 };
